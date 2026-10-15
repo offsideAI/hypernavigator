@@ -1,0 +1,12 @@
+# Kotlin / Gradle
+.gradle/
+.kotlin/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# OS / editors
+.DS_Store
+.idea/
+*.iml
+.vscode/
+local.properties

@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 2,
+  "id": "dev.hypernavigator.fixtures.wrong-schema",
+  "name": "Wrong schema",
+  "version": "0.1.0",
+  "runtime": "compose-wasm-web",
+  "entry": "index.html"
+}

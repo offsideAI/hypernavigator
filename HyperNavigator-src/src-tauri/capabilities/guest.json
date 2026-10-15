@@ -1,0 +1,9 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "guest",
+  "description": "Remote Compose/Wasm app WebViews (`guest-<session>`). Intentionally grants nothing: no commands, no events, no plugins, no remote URLs. Data reaches the guest only through Host-initiated events.",
+  "webviews": ["guest-*"],
+  "local": false,
+  "platforms": ["macOS"],
+  "permissions": []
+}

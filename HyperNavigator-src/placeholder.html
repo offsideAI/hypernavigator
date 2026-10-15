@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HyperNavigator</title>
+    <link rel="stylesheet" href="/src/placeholder.css" />
+    <script type="module" src="/src/placeholder.ts"></script>
+  </head>
+  <body>
+    <main id="ready">
+      <h1>HyperNavigator</h1>
+      <p>Enter a <code>hypernavigator.json</code> URL above and press Go.</p>
+      <p class="muted">
+        Example: <code>http://127.0.0.1:8765/counter/hypernavigator.json</code><br />
+        Build and serve the examples from <code>WebAppExamples-src/</code> with <code>scripts/build-example.sh</code> and <code>scripts/serve-example.sh</code>.
+      </p>
+      <p class="warning">
+        Developer preview. Only apps served from <code>http://127.0.0.1:8765</code> load, and they are unsigned and
+        unverified. Do not use HyperNavigator with code you do not trust.
+      </p>
+    </main>
+    <main id="error" hidden>
+      <h1>Could not open this app</h1>
+      <p id="error-message"></p>
+    </main>
+  </body>
+</html>

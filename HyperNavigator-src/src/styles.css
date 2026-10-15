@@ -1,0 +1,261 @@
+:root {
+  color-scheme: light dark;
+  --bg: #f4f4f5;
+  --fg: #18181b;
+  --muted: #52525b;
+  --border: #d4d4d8;
+  --field: #ffffff;
+  --button: #e4e4e7;
+  --button-hover: #d4d4d8;
+  --accent: #2563eb;
+  --accent-fg: #ffffff;
+  --badge-bg: #fef3c7;
+  --badge-fg: #78350f;
+  --ok: #16a34a;
+  --busy: #2563eb;
+  --warn: #d97706;
+  --error: #dc2626;
+  --scrim: rgba(24, 24, 27, 0.45);
+  --dialog: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #18181b;
+    --fg: #f4f4f5;
+    --muted: #a1a1aa;
+    --border: #3f3f46;
+    --field: #0f0f11;
+    --button: #27272a;
+    --button-hover: #3f3f46;
+    --accent: #3b82f6;
+    --badge-bg: #422006;
+    --badge-fg: #fde68a;
+    --ok: #4ade80;
+    --busy: #60a5fa;
+    --warn: #fbbf24;
+    --error: #f87171;
+    --scrim: rgba(0, 0, 0, 0.6);
+    --dialog: #202024;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--fg);
+  font: 13px/1.4 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* The chrome WebView is exactly 76 logical px tall (layout::CHROME_HEIGHT). */
+.chrome {
+  height: 76px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px 10px 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+}
+
+button {
+  font: inherit;
+  color: var(--fg);
+  background: var(--button);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  height: 30px;
+  padding: 0 12px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+button:hover:not(:disabled) {
+  background: var(--button-hover);
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+button.icon {
+  width: 30px;
+  padding: 0;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.address {
+  flex: 1;
+  display: flex;
+  gap: 6px;
+  min-width: 0;
+}
+
+.address input {
+  flex: 1;
+  min-width: 0;
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  background: var(--field);
+  color: var(--fg);
+  font: 13px ui-monospace, SFMono-Regular, Menlo, monospace;
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+.address input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+}
+
+#go,
+button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-fg);
+}
+
+.statusbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 22px;
+  min-width: 0;
+  font-size: 12px;
+}
+
+.badge {
+  flex: none;
+  background: var(--badge-bg);
+  color: var(--badge-fg);
+  border-radius: 5px;
+  padding: 2px 8px;
+  font-weight: 600;
+}
+
+.status {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+}
+
+.status #status-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.status .dot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--muted);
+}
+
+.status[data-kind='ok'] .dot { background: var(--ok); }
+.status[data-kind='busy'] .dot { background: var(--busy); }
+.status[data-kind='warn'] .dot { background: var(--warn); }
+.status[data-kind='error'] .dot { background: var(--error); }
+.status[data-kind='error'] #status-text { color: var(--error); }
+.status[data-kind='warn'] #status-text { color: var(--warn); }
+
+.origin {
+  flex: none;
+  color: var(--muted);
+  font: 12px ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* Shown only while Rust has expanded the chrome WebView over the hidden guest. */
+.overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: var(--scrim);
+}
+
+.overlay[hidden] {
+  display: none;
+}
+
+.dialog {
+  width: min(560px, 100%);
+  background: var(--dialog);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px 24px 18px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+.dialog h1 {
+  margin: 0 0 10px;
+  font-size: 17px;
+}
+
+.dialog h2 {
+  margin: 0 0 4px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.dialog .lead {
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.dialog code {
+  font: 12px ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.scope {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 14px 0;
+}
+
+.scope ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.note {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 14px;
+}

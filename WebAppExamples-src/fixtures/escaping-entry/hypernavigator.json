@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "id": "dev.hypernavigator.fixtures.escaping-entry",
+  "name": "Escaping entry",
+  "version": "0.1.0",
+  "runtime": "compose-wasm-web",
+  "entry": "../counter/index.html"
+}

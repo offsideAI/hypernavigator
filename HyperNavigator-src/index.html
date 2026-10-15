@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HyperNavigator</title>
+    <link rel="stylesheet" href="/src/styles.css" />
+    <script type="module" src="/src/main.ts"></script>
+  </head>
+  <body>
+    <header class="chrome" id="chrome">
+      <div class="toolbar">
+        <button class="icon" id="back" title="Back" aria-label="Back" disabled>&#8592;</button>
+        <button class="icon" id="forward" title="Forward" aria-label="Forward" disabled>&#8594;</button>
+        <button class="icon" id="reload" title="Reload (re-fetch manifest, fresh guest view)" aria-label="Reload" disabled>&#8635;</button>
+        <form class="address" id="address-form" autocomplete="off">
+          <input id="address" type="text" spellcheck="false" aria-label="Manifest URL" />
+          <button type="submit" id="go">Go</button>
+        </form>
+        <button id="share" class="share" disabled title="Share the names of items in a folder with the running app">
+          Share folder names
+        </button>
+      </div>
+      <div class="statusbar">
+        <span class="badge" title="HyperNavigator v0.1 runs unsigned code from http://127.0.0.1:8765 only. It is not safe for untrusted applications.">
+          Developer preview - localhost bundles only
+        </span>
+        <span class="status" id="status" data-kind="idle"><span class="dot"></span><span id="status-text">Ready</span></span>
+        <span class="origin" id="origin" title="Origin of the app in the view below">Guest: none</span>
+      </div>
+    </header>
+
+    <div class="overlay" id="share-dialog" hidden>
+      <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="share-title">
+        <h1 id="share-title">Share folder names?</h1>
+        <p class="lead">
+          You are about to send <strong id="share-app"></strong> (<code id="share-origin"></code>) a one-time list
+          from the folder <strong id="share-folder"></strong>.
+        </p>
+        <div class="scope">
+          <div>
+            <h2>Will be shared</h2>
+            <ul>
+              <li>Names of up to <span id="share-max"></span> items directly inside this folder</li>
+              <li>Each item's type: file, directory, symlink or other</li>
+            </ul>
+          </div>
+          <div>
+            <h2>Will not be shared</h2>
+            <ul>
+              <li>Absolute paths or the folder's location</li>
+              <li>File contents, sizes or dates</li>
+              <li>Contents of subfolders or symlink targets</li>
+              <li>Any write access</li>
+            </ul>
+          </div>
+        </div>
+        <p class="note">
+          The app is unsigned localhost code. The grant ends when the app navigates or reloads. Once sent, the names
+          cannot be taken back from the app.
+        </p>
+        <div class="actions">
+          <button id="share-cancel" class="secondary">Cancel</button>
+          <button id="share-confirm" class="primary">Share names</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "id": "dev.hypernavigator.fixtures.missing-entry",
+  "name": "Missing entry",
+  "version": "0.1.0",
+  "runtime": "compose-wasm-web",
+  "entry": "index.html"
+}

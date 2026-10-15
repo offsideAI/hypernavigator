@@ -1,0 +1,30 @@
+[package]
+name = "hypernavigator"
+version = "0.1.0"
+description = "HyperNavigator developer preview: trusted-localhost Compose/Wasm app browser"
+edition = "2021"
+rust-version = "1.80"
+publish = false
+
+[lib]
+name = "hypernavigator_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "=2.7.2", features = [] }
+
+[dependencies]
+# `unstable` enables Window::add_child / WebviewBuilder (multi-webview).
+tauri = { version = "=2.12.3", features = ["unstable"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+url = "2.5"
+ureq = { version = "3.4", default-features = false }
+rfd = { version = "0.17", default-features = false }
+
+[dev-dependencies]
+tauri = { version = "=2.12.3", features = ["unstable", "test"] }
+tempfile = "3"
+
+[profile.dev]
+incremental = true

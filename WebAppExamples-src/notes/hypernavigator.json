@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "id": "dev.hypernavigator.examples.notes",
+  "name": "Compose Notes",
+  "version": "0.1.0",
+  "runtime": "compose-wasm-web",
+  "entry": "index.html",
+  "permissions": []
+}

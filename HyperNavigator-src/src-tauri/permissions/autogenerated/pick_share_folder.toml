@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-pick-share-folder"
+description = "Enables the pick_share_folder command without any pre-configured scope."
+commands.allow = ["pick_share_folder"]
+
+[[permission]]
+identifier = "deny-pick-share-folder"
+description = "Denies the pick_share_folder command without any pre-configured scope."
+commands.deny = ["pick_share_folder"]

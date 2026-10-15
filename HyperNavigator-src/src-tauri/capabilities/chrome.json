@@ -1,0 +1,19 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "chrome",
+  "description": "Trusted browser chrome only. Scoped to the `chrome` WebView label (not the window, which also contains the guest) and to local app content.",
+  "webviews": ["chrome"],
+  "local": true,
+  "platforms": ["macOS"],
+  "permissions": [
+    "core:event:allow-listen",
+    "core:event:allow-unlisten",
+    "allow-nav-state",
+    "allow-navigate",
+    "allow-go-back",
+    "allow-go-forward",
+    "allow-reload",
+    "allow-pick-share-folder",
+    "allow-resolve-share-folder"
+  ]
+}

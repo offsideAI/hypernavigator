@@ -1,0 +1,12 @@
+# Repo-wide ignores. Build outputs are ignored by each project's own .gitignore
+# (HyperNavigator-src/.gitignore, WebAppExamples-src/.gitignore).
+
+# Web server root: staged example apps served on http://127.0.0.1:8765
+# (regenerate with WebAppExamples-src/scripts/build-example.sh)
+/WebServer-dist/
+
+# OS / editors (apply at any depth, including the repo root)
+.DS_Store
+.idea/
+*.iml
+.vscode/
